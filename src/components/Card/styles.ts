@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const GridDiv = styled.div`
+  display: grid;
+  grid-gap: 3.2rem;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+`;
+
 export const CardContainer = styled.div`
   width: 300px;
   overflow: hidden;
@@ -17,7 +24,7 @@ export const CardContainer = styled.div`
 
 export const ImgDiv = styled.div`
   overflow: hidden;
-  height: 200px;
+  height: 300px;
 `;
 
 export const CardContent = styled.div`
@@ -31,6 +38,7 @@ export const CardContent = styled.div`
 
   > div h3 {
     color: #f2ec25;
+    font-size: 28px;
     margin-bottom: 0.5rem;
   }
 `;

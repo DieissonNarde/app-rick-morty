@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { ChangeEvent } from "react";
+
+// import { useCharacters } from "../../hooks/useCharacters";
+
 import { SearchContainer } from "./styles";
 
 
-export function Search(): JSX.Element {
-  const [searchTerm, setSearchTerm] = useState('');
+type SearchProps = {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export function Search({ searchText, setSearchText }: SearchProps): JSX.Element {
+
+  async function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+
+    setSearchText(value);
+  }
+
   return (
     <SearchContainer>
       <input
         type="text"
         placeholder="Pesquise seu personagem..."
-        onChange={(e) => {setSearchTerm(e.target.value)}}
+        value={searchText}
+        onChange={handleChange}
       />
-      {/* {JSONDATA.filter((val) => {
-        if (searchTerm == "") {
-          return val
-        } else if (val.first.name.toLowerCase())
-      }).map((val, key) => {
-        return (
-          <div>
-            <p>{val.first_name}</p>
-          </div>
-        );
-      })} */}
     </SearchContainer>
   );
 }

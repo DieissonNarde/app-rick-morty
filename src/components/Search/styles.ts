@@ -7,8 +7,8 @@ export const SearchContainer = styled.div`
   flex-direction: column;
 
   > input {
-    margin-top: 20px;
-    width: 40vw;
+    margin: 38px 0;
+    width: 45vw;
     height: 48px;
     font-size: 20px;
     padding-left: 10px;
