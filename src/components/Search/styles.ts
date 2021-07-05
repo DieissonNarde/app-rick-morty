@@ -12,8 +12,21 @@ export const SearchContainer = styled.div`
     height: 48px;
     font-size: 20px;
     padding-left: 10px;
-    border: 2px solid #f2ec25;
+    border: 1px solid #f2ec25;
     border-radius: 8px;
+
+    transition: filter 0.2s;
+
+    transition: ease-in;
+
+    &:hover {
+      filter: brightness(0.9);
+      border: 2px solid #f2ec25;
+    }
+
+    &:focus {
+      border: 3px solid #3cb54a;
+    }
   }
 
   > p {

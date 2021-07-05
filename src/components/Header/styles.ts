@@ -26,7 +26,7 @@ export const HeaderContainer = styled.div`
     font-weight: 600;
     background: #3cb54a;
     color: #312E38;
-    padding: 0 20px;
+    padding: 0 28px;
 
     display: flex;
     justify-content: space-between;
@@ -43,8 +43,8 @@ export const HeaderContainer = styled.div`
     }
 
     &:hover {
-    filter: brightness(0.9);
-  }
+      filter: brightness(0.9);
+    }
   }
 `;
 

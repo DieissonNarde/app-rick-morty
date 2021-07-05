@@ -1,17 +1,22 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import { HeaderTag, HeaderContainer, ImgDiv } from './styles';
 
-import heartImg from '../../assets/images/heart.svg';
 import rickAndMortyImg from '../../assets/images/rick-morty.png';
 
+type HeaderProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  imgButton: string;
+  children: string;
+};
 
-export function Header(): JSX.Element {
+export function Header({ imgButton, children }: HeaderProps): JSX.Element {
   return (
     <HeaderTag>
       <HeaderContainer>
         <h1>RICK &amp; MORTY</h1>
         <button>
-          <img src={heartImg} alt="Ícone de favoritos" />
-          FAVORITOS
+          <img src={imgButton} alt="Ícone de favoritos" />
+          {children}
         </button>
       </HeaderContainer>
       <ImgDiv>
