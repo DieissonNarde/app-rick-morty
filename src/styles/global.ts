@@ -1,18 +1,21 @@
 import { createGlobalStyle } from 'styled-components';
 
+import shlopFont from '../assets/fonts/shlop.ttf';
+
+
 export default createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+
+  @font-face {
+    font-family: 'Shlop';
+    src: local(Shlop), url(${shlopFont});
+  }
+
   * {
     margin: 0;
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-  }
-
-  @font-face {
-    font-family: 'Shlop';
-    src: url('assets/fonts/shlop-rg.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
   }
 
   body {
@@ -21,14 +24,15 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased
   }
 
-  body, input, button {
-    font-family: "Shlop", sans-serif;
-    font-size: 16px;
-  }
-
   h1, h2, h3, h4, h5, h6, strong {
+    font-family: "Shlop", sans-serif;
     font-weight: 500;
   }
+
+  p, input, button {
+    font-family: 'Concert One', cursive;
+  }
+
   button {
     cursor: pointer;
   }
