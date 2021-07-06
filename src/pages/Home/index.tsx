@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import api from "../../services/api";
 
 import { Header } from "../../components/Header";
 import { Search } from "../../components/Search";
 import { Card } from "../../components/Card";
 import { Footer } from "../../components/Footer";
 
-import { HomeContainer } from "./styles";
+import { HomeContainer, LoadingDiv, NotFoundDiv } from "./styles";
 import heartImg from '../../assets/images/heart.svg';
 import notFoundImg from '../../assets/images/not-found.png';
 
@@ -21,25 +22,30 @@ export function Home(): JSX.Element {
   useEffect(() => {
     async function loadCharacters() {
       if (searchText === "") {
-        const res = await fetch('https://rickandmortyapi.com/api/character');
-        const data = await res.json();
-        
-        if (data.status === "404") {
-          setNotFound(true)
-        }
+        await api.get('/character')
+          .then((response) => {
+            const data = response.data.results;
 
-        setCharacters(data.results);
-        setLoading(false);
+            setCharacters(data);
+            setLoading(false);
+            setNotFound(false);
+          },
+          (error) => {
+            console.error(error);
+            setNotFound(true);
+          });
       } else {
-        const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${searchText}`);
-        const data = await res.json();
+        await api.get(`/character/?name=${searchText}`)
+          .then((response) => {
+            const data = response.data.results;
 
-        if (data.status === "404") {
-          setNotFound(true)
-        }
-
-        setCharacters(data.results);
-        setLoading(false);
+            setCharacters(data);
+            setLoading(false);
+            setNotFound(false);
+          },(error) => {
+            console.error(error);
+            setNotFound(true);
+          })
       }
     }
 
@@ -49,20 +55,24 @@ export function Home(): JSX.Element {
   return (
     <div>
       <Header imgButton={heartImg}>
-        FAVORITOS
+        Favoritos
       </Header>
 
       <HomeContainer>
         <Search searchText={searchText} setSearchText={setSearchText} />
         {
-          loading ? <div>Loading...</div> :
-          (notFound ? (
-            <div>
-              <h3>Procuramos em todas as dimensões e não foi encontrado esse cara</h3>
-              <img src={notFoundImg} alt="Rick e Morty procurando o personagem pelas dimensões" />
-            </div>
+          loading ? (
+            <LoadingDiv>
+              <p>Loading...</p>
+            </LoadingDiv>
           ) : (
-            <Card characters={characters} />
+            notFound ? (
+              <NotFoundDiv>
+                <h3>Procuramos em todas as dimensões e não foi encontrado esse cara</h3>
+                <img src={notFoundImg} alt="Rick e Morty procurando o personagem pelas dimensões" />
+              </NotFoundDiv>
+            ) : (
+              <Card characters={characters} />
           ))
         }
       </HomeContainer>

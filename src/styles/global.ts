@@ -4,8 +4,6 @@ import shlopFont from '../assets/fonts/shlop.ttf';
 
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-
   @font-face {
     font-family: 'Shlop';
     src: local(Shlop), url(${shlopFont});
@@ -30,7 +28,7 @@ export default createGlobalStyle`
   }
 
   p, input, button {
-    font-family: 'Concert One', cursive;
+    font-family: 'Nova Cut', cursive;
   }
 
   button {
