@@ -8,8 +8,8 @@ import homeImg from '../../assets/images/home.svg';
 export function Favorites(): JSX.Element {
   return (
     <div>
-      <Header imgButton={homeImg}>
-        HOME
+      <Header imgButton={homeImg} toLink={"/"}>
+        Home
       </Header>
 
       <FavoritesContainer>

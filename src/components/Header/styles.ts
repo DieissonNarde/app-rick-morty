@@ -19,7 +19,11 @@ export const HeaderContainer = styled.div`
     margin: 0;
   }
 
-  > button {
+  > a {
+    text-decoration: none;
+  }
+
+  > a button {
     height: 3.2rem;
     border-radius: 8px;
     font-size: 1.3rem;
@@ -38,7 +42,7 @@ export const HeaderContainer = styled.div`
     transition: filter 0.2s;
 
     > img {
-      width: 26px;
+      width: 24px;
       margin-right: 12px;
     }
 

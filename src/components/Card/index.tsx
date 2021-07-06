@@ -1,3 +1,4 @@
+import { useFavorites } from "../../hooks/useFavorites";
 import { CardContainer, CardContent, GridDiv, ImgDiv } from "./styles";
 
 type Characters= {
@@ -13,6 +14,12 @@ type Character = {
 }
 
 export function Card({ characters }: Characters): JSX.Element {
+  const { addCharacter } = useFavorites();
+
+  function handleAddCharacter(character: Character) {
+    addCharacter(character);
+  }
+  
   return (
     <GridDiv>
     {
