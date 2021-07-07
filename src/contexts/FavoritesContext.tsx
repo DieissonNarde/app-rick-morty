@@ -10,13 +10,12 @@ type Character = {
   image: string;
   name: string;
   species: string;
-  type: string;
+  type?: string;
 }
 
 type FavoritesContextType = {
   favorites: Character[];
-  addCharacter: (character: Character) => Promise<void>;
-  removeCharacter: (character: Character) => void;
+  updateFavorites: (character: Character) => Promise<void>;
 }
 
 
@@ -33,7 +32,7 @@ export function FavoritesContextProvider({ children }: FavoritesContextProviderP
     return [];
   });
 
-  async function addCharacter(character: Character) {
+  async function updateFavorites(character: Character) {
     try {
       const characterAlreadyInFavorites = favorites.find(characterItem => characterItem.id === character.id);
 
@@ -42,30 +41,20 @@ export function FavoritesContextProvider({ children }: FavoritesContextProviderP
         localStorage.setItem('@RickAndMorty:favorites', JSON.stringify([...favorites, { ...character }]))
         
         return;
-      }
-    } catch {
-      console.log('Erro ao adicionar o personagem como favorito!');
-    }
-  }
+      } else {
+        const updatedFavorites = favorites.filter(favoritesItem => favoritesItem.id !== character.id);
+        setFavorites(updatedFavorites);
+        localStorage.setItem('@RickAndMorty:favorites', JSON.stringify(updatedFavorites))
 
-  async function removeCharacter(character: Character) {
-    try {
-      const characterExists = favorites.some(characterItem => characterItem.id === character.id);
-      if (!characterExists) {
-        console.log('Erro ao remover o character!');
         return;
       }
-
-      const updatedFavorites = favorites.filter(favoritesItem => favoritesItem.id !== character.id);
-      setFavorites(updatedFavorites);
-      localStorage.setItem('@RickAndMorty:favorites', JSON.stringify(updatedFavorites))
     } catch {
-      console.log('Erro ao remover o character!');
+      console.log('Erro ao atualizar a lista de favoritos!');
     }
   }
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addCharacter, removeCharacter }}>
+    <FavoritesContext.Provider value={{ favorites, updateFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );

@@ -8,6 +8,7 @@ export const GridDiv = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  
   width: 300px;
   overflow: hidden;
   border-radius: 8px;
@@ -20,11 +21,22 @@ export const CardContainer = styled.div`
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;
   }
+
+  
 `;
 
 export const ImgDiv = styled.div`
+  position: relative;
   overflow: hidden;
   height: 300px;
+
+  > div {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    z-index: 1;
+    cursor: pointer;
+  }
 `;
 
 export const CardContent = styled.div`

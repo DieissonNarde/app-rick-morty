@@ -4,14 +4,18 @@ import GlobalStyle from './styles/global';
 
 import { Home } from './pages/Home';
 import { Favorites } from './pages/Favorites';
+import { FavoritesContextProvider } from './contexts/FavoritesContext';
 
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/favorites" exact component={Favorites} />
+        <FavoritesContextProvider>
+          <Route path="/" exact component={Home} />
+          <Route path="/favorites" exact component={Favorites} />
+        </FavoritesContextProvider>
+        
       </Switch>
       <GlobalStyle />
     </BrowserRouter>
