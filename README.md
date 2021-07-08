@@ -1,46 +1,61 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <img src="/src/assets/images/wubba-lubba" alt="Wubba lubba dub dub" width="120">
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  Pequena consulta, visualização e cadastro de personagens favoritos do seriado Rick & Morty.
+</p>
 
-## Available Scripts
+[//]: # (Add your gifs/images here:)
+<p align="center">
+  <img src="/src/assets/gifs/rick-morty.gif" width="300">
+</p>
 
-In the project directory, you can run:
+## API
 
-### `yarn start`
+Na aplicação foi utilizada a API pública https://rickandmortyapi.com/documentation/#introduction para o consumo das requisições dos personagens
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## REQUISITOS
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Deve-se criar uma aplicação React com Typescript de uma única página onde possamos:
+* Buscar um personagem pelo o nome;
+* Visualizar o feedback de loading enquanto a API não responde;
+* Exibir mensagem de erro caso o personagem não exista;
+* Exibir informações mínimas sobre o(s) personagem(ns) caso ele(s) exista(m);
+* Registrar o personagem na lista de favoritos utilizando alguma biblioteca de controle de estado global ou a Context API nativa do React;
+* Visualizar a lista de personagens favoritos;
+* Excluir personagem da lista;
 
-### `yarn test`
+## HISTÓRIAS DE USUÁRIO
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Buscar personagem
+2. Ao pesquisar um personagem, gostaria de ver nome, genero e sua foto(se existir) antes de decidir favoritá-lo.
+3. Ao pesquisar um personagem, gostaria de salvá-lo para que fique listado nos meus favoritos.
+4. Ao pesquisar um um personagem que não existe, gostaria de ser avisado que ele não existe.
 
-### `yarn build`
+## :rocket: TECNOLOGIAS
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React JS** 
+- **Typescript** 
+- **Styled Components** 
+- **Axios** 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🤔 Como executar o projeto
+```bash
+# Clone este repositório
+$ git clone https://github.com/DieissonNarde/api-rick-morty.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Acesse a pasta do projeto no seu terminal
+$ cd api-rick-morty
 
-### `yarn eject`
+# Instale as dependências
+$ yarn install
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Execute a aplicação 
+$ yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Feito com :green_heart: by Dieisson Narde
