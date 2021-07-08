@@ -10,13 +10,6 @@ import notFavoritesImg from '../../assets/images/not-favorites.ico';
 
 import { useFavorites } from "../../hooks/useFavorites";
 
-type Character = {
-  id: number;
-  image: string;
-  name: string;
-  species: string;
-  type?: string;
-}
 
 export function Favorites(): JSX.Element {
   const [loading, setLoading] = useState(true);
